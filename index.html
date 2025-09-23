@@ -6,40 +6,40 @@
   <title>TOK · Way of Knowing: Memory</title>
   <style>
     :root{
-      --bg:#f7f9fc;        /* softer, modern light background */
+      --bg:#ffffff;        /* white background */
       --ink:#0e1a2b;       /* main text */
       --muted:#546b8d;     /* secondary text */
-      --card:#ffffff;      /* cards */
+      --card:#f7faff;      /* very light blue cards */
       --accent:#2b6cff;    /* blue accent */
       --accent-2:#12a18d;  /* teal accent */
-      --border:#e6ecf5;    /* subtle borders */
+      --border:#c9d6f2;    /* subtle blue-tinted borders */
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans",sans-serif;background:var(--bg);color:var(--ink);}
-    header{position:sticky;top:0;z-index:5;background:linear-gradient(180deg,#ffffffef,#ffffffdd);border-bottom:1px solid var(--border)}
+    header{position:sticky;top:0;z-index:5;background:linear-gradient(180deg,#f0f6ff,#e8f1ff);border-bottom:1px solid var(--border)}
     .wrap{max-width:1100px;margin:0 auto;padding:14px 18px}
-    h1{margin:0;line-height:1.15;font-weight:800;font-size:clamp(22px,5.5vw,40px);letter-spacing:.2px}
+    h1{margin:0;line-height:1.15;font-weight:800;font-size:clamp(22px,5.5vw,40px);letter-spacing:.2px;color:var(--accent)}
     .subtitle{color:var(--muted);font-size:clamp(12px,2.5vw,14px);margin-top:4px}
     main{padding:22px 18px 64px}
-    section{max-width:1100px;margin:16px auto;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:18px;box-shadow:0 6px 20px rgba(15,33,75,.06)}
-    section h2{margin:4px 0 8px;font-size:24px}
+    section{max-width:1100px;margin:16px auto;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:18px;box-shadow:0 6px 20px rgba(43,108,255,.08)}
+    section h2{margin:4px 0 8px;font-size:24px;color:var(--accent)}
     .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
     .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px}
     .muted{color:var(--muted)}
-    .img-slot{height:180px;border:2px dashed var(--border);border-radius:12px;display:grid;place-items:center;color:var(--muted);font-size:14px;background:linear-gradient(180deg,#fafcff,#f7fbff)}
-    .tag{display:inline-block;padding:4px 8px;border-radius:999px;background:#eef4ff;border:1px solid var(--border);color:#2b5bd6;font-size:12px;margin-right:6px}
+    .img-slot{height:180px;border:2px dashed var(--border);border-radius:12px;display:grid;place-items:center;color:var(--muted);font-size:14px;background:#ffffff}
+    .tag{display:inline-block;padding:4px 8px;border-radius:999px;background:#dfe9ff;border:1px solid var(--border);color:#2b5bd6;font-size:12px;margin-right:6px}
     /* quiz */
     .quiz q{display:block;font-size:18px;margin-bottom:10px}
     .quiz .choices{display:grid;gap:8px}
-    .choice{padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:#f8fbff;cursor:pointer}
+    .choice{padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:#f0f6ff;cursor:pointer}
     .choice.correct{outline:2px solid #28c07f}
     .choice.wrong{outline:2px solid #ff6a6a}
     /* experiment */
     .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-    .chip{padding:6px 10px;border-radius:10px;background:#eef4ff;border:1px solid var(--border)}
-    .progress{height:6px;background:#ebf1fb;border-radius:999px;overflow:hidden}
+    .chip{padding:6px 10px;border-radius:10px;background:#e1ecff;border:1px solid var(--border);color:var(--ink)}
+    .progress{height:6px;background:#e1ecff;border-radius:999px;overflow:hidden}
     .bar{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .2s linear}
-    .btn{cursor:pointer;border:1px solid var(--border);background:linear-gradient(180deg,#ffffff,#f2f6ff);color:var(--ink);padding:8px 14px;border-radius:10px}
+    .btn{cursor:pointer;border:1px solid var(--border);background:linear-gradient(180deg,#ffffff,#f0f6ff);color:var(--ink);padding:8px 14px;border-radius:10px}
     footer{max-width:1100px;margin:24px auto 60px;padding:0 18px;color:var(--muted)}
     .small{font-size:12px}
   </style>
@@ -165,7 +165,7 @@
       <p class="muted small" id="quizMsg" role="status"></p>
     </section>
 
-    <!-- REFERENCES ONLY (everything under Make‑your‑own removed) -->
+    <!-- REFERENCES ONLY -->
     <section id="refs">
       <h2>References & Attributions</h2>
       <div class="card">
@@ -207,8 +207,8 @@
       const gotFirst=typed.some(w=>first.has(w));
       const gotLast=typed.some(w=>last.has(w));
       scoreOut.innerHTML=`You recalled <strong>${correct.length}/${current.length}</strong> words. `+
-        `<span class="muted">Primacy: ${gotFirst? '✓':'—'} | Recency: ${gotLast? '✓':'—'}</span><br>`+
-        `<span class="small">Target list: ${current.join(', ')}</span>`;
+        `<span class=\"muted\">Primacy: ${gotFirst? '✓':'—'} | Recency: ${gotLast? '✓':'—'}</span><br>`+
+        `<span class=\"small\">Target list: ${current.join(', ')}</span>`;
     });
 
     // Quiz logic
