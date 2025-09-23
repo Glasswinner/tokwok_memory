@@ -6,20 +6,20 @@
   <title>TOK · Way of Knowing: Memory</title>
   <style>
     :root{
-      --bg:#ffffff;        /* background */
-      --ink:#0e1a2b;       /* main text */
-      --muted:#546b8d;     /* secondary text */
-      --card:#f7faff;      /* very light blue cards */
-      --accent:#2b6cff;    /* bright blue accent */
-      --accent-2:#12a18d;  /* teal accent */
-      --border:#c9d6f2;    /* subtle blue-tinted borders */
-      --darkblue:#0b1d46;  /* deep navy */
+      --bg:#ffffff;
+      --ink:#0e1a2b;
+      --muted:#546b8d;
+      --card:#f7faff;
+      --accent:#2b6cff;
+      --accent-2:#12a18d;
+      --border:#c9d6f2;
+      --darkblue:#0b1d46;
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans",sans-serif;background:var(--bg);color:var(--ink);}
-    header{position:sticky;top:0;z-index:5;background:var(--darkblue);border-bottom:3px solid var(--accent)}
-    .wrap{max-width:1100px;margin:0 auto;padding:16px 18px}
-    h1{margin:0;line-height:1.15;font-weight:800;font-size:clamp(22px,5.5vw,40px);letter-spacing:.2px;color:#ffffff}
+    header{position:sticky;top:0;z-index:5;background:var(--darkblue);border-bottom:4px solid var(--accent);}
+    header .wrap{max-width:1100px;margin:0 auto;padding:20px 18px;}
+    h1{margin:0;line-height:1.15;font-weight:800;font-size:clamp(22px,5.5vw,40px);letter-spacing:.2px;color:#ffffff;}
     .subtitle{color:#d1dbf0;font-size:clamp(12px,2.5vw,14px);margin-top:4px}
     main{padding:22px 18px 64px}
     section{max-width:1100px;margin:16px auto;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:18px;box-shadow:0 6px 20px rgba(11,29,70,.1)}
@@ -27,21 +27,37 @@
     .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
     .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;box-shadow:0 2px 6px rgba(11,29,70,.05)}
     .muted{color:var(--muted)}
-    .img-slot{height:180px;border:2px dashed var(--border);border-radius:12px;display:grid;place-items:center;color:var(--muted);font-size:14px;background:#ffffff}
-    .tag{display:inline-block;padding:4px 8px;border-radius:999px;background:#2b6cff;color:#ffffff;font-size:12px;margin-right:6px}
-    /* quiz */
+    /* Updated image slots */
+    .img-slot{
+      width:100%;
+      aspect-ratio: 4 / 3; /* consistent rectangle shape */
+      border:2px dashed var(--border);
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      color:var(--muted);
+      font-size:14px;
+      background:#ffffff;
+      overflow:hidden;
+    }
+    .img-slot img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:12px;
+    }
+    .tag{display:inline-block;padding:4px 8px;border-radius:999px;background:var(--darkblue);color:#ffffff;font-size:12px;margin-right:6px}
     .quiz q{display:block;font-size:18px;margin-bottom:10px;color:var(--darkblue)}
     .quiz .choices{display:grid;gap:8px}
     .choice{padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:#eef3ff;cursor:pointer}
     .choice.correct{outline:2px solid #28c07f}
     .choice.wrong{outline:2px solid #ff6a6a}
-    /* experiment */
     .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-    .chip{padding:6px 10px;border-radius:10px;background:#2b6cff;color:#ffffff}
+    .chip{padding:6px 10px;border-radius:10px;background:var(--accent);color:#ffffff}
     .progress{height:6px;background:#dce4f7;border-radius:999px;overflow:hidden}
     .bar{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .2s linear}
-    .btn{cursor:pointer;border:1px solid var(--border);background:var(--accent);color:#ffffff;padding:8px 14px;border-radius:10px;transition:background .2s}
-    .btn:hover{background:#1f55d9}
+    .btn{cursor:pointer;border:1px solid var(--border);background:var(--darkblue);color:#ffffff;padding:8px 14px;border-radius:10px;transition:background .2s}
+    .btn:hover{background:#10285e}
     footer{max-width:1100px;margin:24px auto 60px;padding:0 18px;color:var(--muted)}
     .small{font-size:12px}
   </style>
@@ -55,7 +71,6 @@
   </header>
 
   <main>
-    <!-- ABOUT / INTRO -->
     <section id="about">
       <h2>What is, and how does memory relate to TOK?</h2>
       <p>Memory is a storage system for our lives: experiences, lectures, and everything learned so far. Most of the time, we access knowledge <em>through</em> memory. Yet because memory is frequent, personal, and reconstructive, this storage system is often fallible and prone to bias. Theory of Knowledge examines how we acquire and justify knowledge—work that assumes we can store it, retrieve it, and critically evaluate how memory shapes what we claim to know.</p>
@@ -73,10 +88,9 @@
       </div>
     </section>
 
-    <!-- ALTERNATE AOKS -->
     <section id="aoks">
       <h2>Alternate Areas of Knowledge</h2>
-      <div class="img-slot" style="margin-bottom:10px">[ image: <strong>woktwo_web</strong> ]</div>
+      <div class="img-slot">[ image: <strong>woktwo_web</strong> ]</div>
       <div class="grid">
         <div class="card">
           <h3 style="color:var(--darkblue)">Mathematics</h3>
@@ -91,7 +105,6 @@
       </div>
     </section>
 
-    <!-- THEMES -->
     <section id="themes">
       <h2>Alternate TOK Themes Involving Memory</h2>
       <div class="grid">
@@ -108,7 +121,6 @@
       </div>
     </section>
 
-    <!-- REAL WORLD EXAMPLES -->
     <section id="examples">
       <h2>Real‑World Examples</h2>
       <div class="card">
@@ -118,7 +130,6 @@
       </div>
     </section>
 
-    <!-- PERSPECTIVES -->
     <section id="perspectives">
       <h2>Different Perspectives & Interpretations</h2>
       <div class="grid">
@@ -133,7 +144,6 @@
       </div>
     </section>
 
-    <!-- MINI MEMORY EXPERIMENT -->
     <section id="experiment">
       <h2>Try it: Mini Memory Experiment</h2>
       <p class="muted">Test the <em>primacy/recency</em> idea. You'll see words briefly. Then type as many as you remember—in any order.</p>
@@ -151,7 +161,6 @@
       </div>
     </section>
 
-    <!-- QUIZ -->
     <section id="quiz" class="quiz">
       <h2>1‑Minute Quiz</h2>
       <q>Which claim best fits TOK when evaluating memory‑based knowledge?</q>
@@ -164,7 +173,6 @@
       <p class="muted small" id="quizMsg" role="status"></p>
     </section>
 
-    <!-- REFERENCES -->
     <section id="refs">
       <h2>References & Attributions</h2>
       <div class="card">
