@@ -6,40 +6,42 @@
   <title>TOK · Way of Knowing: Memory</title>
   <style>
     :root{
-      --bg:#ffffff;        /* white background */
+      --bg:#ffffff;        /* background */
       --ink:#0e1a2b;       /* main text */
       --muted:#546b8d;     /* secondary text */
       --card:#f7faff;      /* very light blue cards */
-      --accent:#2b6cff;    /* blue accent */
+      --accent:#2b6cff;    /* bright blue accent */
       --accent-2:#12a18d;  /* teal accent */
       --border:#c9d6f2;    /* subtle blue-tinted borders */
+      --darkblue:#0b1d46;  /* deep navy */
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans",sans-serif;background:var(--bg);color:var(--ink);}
-    header{position:sticky;top:0;z-index:5;background:linear-gradient(180deg,#f0f6ff,#e8f1ff);border-bottom:1px solid var(--border)}
-    .wrap{max-width:1100px;margin:0 auto;padding:14px 18px}
-    h1{margin:0;line-height:1.15;font-weight:800;font-size:clamp(22px,5.5vw,40px);letter-spacing:.2px;color:var(--accent)}
-    .subtitle{color:var(--muted);font-size:clamp(12px,2.5vw,14px);margin-top:4px}
+    header{position:sticky;top:0;z-index:5;background:var(--darkblue);border-bottom:3px solid var(--accent)}
+    .wrap{max-width:1100px;margin:0 auto;padding:16px 18px}
+    h1{margin:0;line-height:1.15;font-weight:800;font-size:clamp(22px,5.5vw,40px);letter-spacing:.2px;color:#ffffff}
+    .subtitle{color:#d1dbf0;font-size:clamp(12px,2.5vw,14px);margin-top:4px}
     main{padding:22px 18px 64px}
-    section{max-width:1100px;margin:16px auto;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:18px;box-shadow:0 6px 20px rgba(43,108,255,.08)}
-    section h2{margin:4px 0 8px;font-size:24px;color:var(--accent)}
+    section{max-width:1100px;margin:16px auto;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:18px;box-shadow:0 6px 20px rgba(11,29,70,.1)}
+    section h2{margin:4px 0 8px;font-size:24px;color:var(--darkblue)}
     .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;box-shadow:0 2px 6px rgba(11,29,70,.05)}
     .muted{color:var(--muted)}
     .img-slot{height:180px;border:2px dashed var(--border);border-radius:12px;display:grid;place-items:center;color:var(--muted);font-size:14px;background:#ffffff}
-    .tag{display:inline-block;padding:4px 8px;border-radius:999px;background:#dfe9ff;border:1px solid var(--border);color:#2b5bd6;font-size:12px;margin-right:6px}
+    .tag{display:inline-block;padding:4px 8px;border-radius:999px;background:#2b6cff;color:#ffffff;font-size:12px;margin-right:6px}
     /* quiz */
-    .quiz q{display:block;font-size:18px;margin-bottom:10px}
+    .quiz q{display:block;font-size:18px;margin-bottom:10px;color:var(--darkblue)}
     .quiz .choices{display:grid;gap:8px}
-    .choice{padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:#f0f6ff;cursor:pointer}
+    .choice{padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:#eef3ff;cursor:pointer}
     .choice.correct{outline:2px solid #28c07f}
     .choice.wrong{outline:2px solid #ff6a6a}
     /* experiment */
     .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-    .chip{padding:6px 10px;border-radius:10px;background:#e1ecff;border:1px solid var(--border);color:var(--ink)}
-    .progress{height:6px;background:#e1ecff;border-radius:999px;overflow:hidden}
+    .chip{padding:6px 10px;border-radius:10px;background:#2b6cff;color:#ffffff}
+    .progress{height:6px;background:#dce4f7;border-radius:999px;overflow:hidden}
     .bar{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .2s linear}
-    .btn{cursor:pointer;border:1px solid var(--border);background:linear-gradient(180deg,#ffffff,#f0f6ff);color:var(--ink);padding:8px 14px;border-radius:10px}
+    .btn{cursor:pointer;border:1px solid var(--border);background:var(--accent);color:#ffffff;padding:8px 14px;border-radius:10px;transition:background .2s}
+    .btn:hover{background:#1f55d9}
     footer{max-width:1100px;margin:24px auto 60px;padding:0 18px;color:var(--muted)}
     .small{font-size:12px}
   </style>
@@ -59,50 +61,47 @@
       <p>Memory is a storage system for our lives: experiences, lectures, and everything learned so far. Most of the time, we access knowledge <em>through</em> memory. Yet because memory is frequent, personal, and reconstructive, this storage system is often fallible and prone to bias. Theory of Knowledge examines how we acquire and justify knowledge—work that assumes we can store it, retrieve it, and critically evaluate how memory shapes what we claim to know.</p>
 
       <div class="grid">
-        <!-- Card 1: fallibility KQ with image BEFORE text -->
         <div class="card">
           <div class="img-slot">[ image: <strong>wokone_web</strong> ]</div>
-          <h3 style="margin:10px 0 6px">To what extent is memory fallible in knowledge retention?</h3>
+          <h3 style="margin:10px 0 6px;color:var(--darkblue)">To what extent is memory fallible in knowledge retention?</h3>
           <p class="muted">Consider capacity limits, interference, rehearsal, and reconstruction.</p>
         </div>
-
-        <!-- Card 2: perspectives question -->
         <div class="card">
-          <h3>How does memory influence diverging perspectives on knowledge?</h3>
+          <h3 style="color:var(--darkblue)">How does memory influence diverging perspectives on knowledge?</h3>
           <p class="muted">Confidence ≠ accuracy; different encodings and retrieval cues can produce sincere but incompatible accounts.</p>
         </div>
       </div>
     </section>
 
-    <!-- ALTERNATE AOKS (ONLY 2) -->
+    <!-- ALTERNATE AOKS -->
     <section id="aoks">
       <h2>Alternate Areas of Knowledge</h2>
       <div class="img-slot" style="margin-bottom:10px">[ image: <strong>woktwo_web</strong> ]</div>
       <div class="grid">
         <div class="card">
-          <h3>Mathematics</h3>
+          <h3 style="color:var(--darkblue)">Mathematics</h3>
           <p class="muted"><span class="tag">KQ</span> To what extent does memorized technique (identities, proof patterns) enable or constrain mathematical creativity?</p>
           <div class="img-slot">[ image: <strong>wokthree_web</strong> ]</div>
         </div>
         <div class="card">
-          <h3>Natural Sciences</h3>
+          <h3 style="color:var(--darkblue)">Natural Sciences</h3>
           <p class="muted"><span class="tag">KQ</span> How do lab notebooks and preregistered methods serve as external memory to secure reproducible knowledge?</p>
           <div class="img-slot">[ image: <strong>wokfour_web</strong> ]</div>
         </div>
       </div>
     </section>
 
-    <!-- THEMES: ONLY 2 -->
+    <!-- THEMES -->
     <section id="themes">
       <h2>Alternate TOK Themes Involving Memory</h2>
       <div class="grid">
         <div class="card">
-          <h3>Knowledge & Politics</h3>
+          <h3 style="color:var(--darkblue)">Knowledge & Politics</h3>
           <p class="muted">Collective remembrance, public memorials, and selective forgetting influence policy and identity.</p>
           <div class="img-slot">[ image: <strong>wokfive_web</strong> ]</div>
         </div>
         <div class="card">
-          <h3>Knowledge & Religion</h3>
+          <h3 style="color:var(--darkblue)">Knowledge & Religion</h3>
           <p class="muted">Rituals and liturgy act as communal memory, transmitting values across generations.</p>
           <div class="img-slot">[ image: <strong>woksix_web</strong> ]</div>
         </div>
@@ -113,28 +112,28 @@
     <section id="examples">
       <h2>Real‑World Examples</h2>
       <div class="card">
-        <h3>Version control as external memory (STEM)</h3>
+        <h3 style="color:var(--darkblue)">Version control as external memory (STEM)</h3>
         <p class="muted">Git commits and lab notebooks create an auditable memory of changes—helping communities trust results without relying on individual recall.</p>
         <div class="img-slot">[ image: <strong>wokseven_web</strong> ]</div>
       </div>
     </section>
 
-    <!-- PERSPECTIVES: ONLY 2 -->
+    <!-- PERSPECTIVES -->
     <section id="perspectives">
       <h2>Different Perspectives & Interpretations</h2>
       <div class="grid">
         <div class="card">
-          <h3>Reliabilist</h3>
+          <h3 style="color:var(--darkblue)">Reliabilist</h3>
           <p class="muted">A memory justifies belief when formed by reliable processes (e.g., spaced repetition, corroboration).</p>
         </div>
         <div class="card">
-          <h3>Constructivist</h3>
+          <h3 style="color:var(--darkblue)">Constructivist</h3>
           <p class="muted">Memory is reconstructed at recall; retelling edits the past. Knowledge claims must account for this plasticity.</p>
         </div>
       </div>
     </section>
 
-    <!-- MINI MEMORY EXPERIMENT (kept) -->
+    <!-- MINI MEMORY EXPERIMENT -->
     <section id="experiment">
       <h2>Try it: Mini Memory Experiment</h2>
       <p class="muted">Test the <em>primacy/recency</em> idea. You'll see words briefly. Then type as many as you remember—in any order.</p>
@@ -152,7 +151,7 @@
       </div>
     </section>
 
-    <!-- QUIZ (kept) -->
+    <!-- QUIZ -->
     <section id="quiz" class="quiz">
       <h2>1‑Minute Quiz</h2>
       <q>Which claim best fits TOK when evaluating memory‑based knowledge?</q>
@@ -165,7 +164,7 @@
       <p class="muted small" id="quizMsg" role="status"></p>
     </section>
 
-    <!-- REFERENCES ONLY -->
+    <!-- REFERENCES -->
     <section id="refs">
       <h2>References & Attributions</h2>
       <div class="card">
@@ -179,7 +178,6 @@
   </footer>
 
   <script>
-    // Mini memory experiment logic (unchanged)
     const WORDS = "river cloud magnet citrus canvas orbit velvet prism echo summit coral timber comet ember linen quartz polar canyon neon ivy aurora spiral delta fig willow cedar pixel auric drift".split(" ");
     const pickWords = n => { const pool=[...WORDS]; const chosen=[]; while(chosen.length<n && pool.length){ const i=Math.floor(Math.random()*pool.length); chosen.push(pool.splice(i,1)[0]); } return chosen; };
     const startBtn=document.getElementById('startBtn');
@@ -195,7 +193,7 @@
     startBtn && startBtn.addEventListener('click', async ()=>{
       expBox.style.display='flex'; recallBox.style.display='none'; scoreOut.textContent=''; expBox.innerHTML='';
       const N=parseInt(len.value,10); const S=parseInt(speed.value,10); current=pickWords(N); const total=N*S; let shown=0;
-      for (let w of current){ expBox.innerHTML=`<span class="chip">${w}</span>`; shown+=S; bar.style.width=Math.min(100,(shown/total)*100)+'%'; await new Promise(r=>setTimeout(r,S)); }
+      for (let w of current){ expBox.innerHTML=`<span class=\"chip\">${w}</span>`; shown+=S; bar.style.width=Math.min(100,(shown/total)*100)+'%'; await new Promise(r=>setTimeout(r,S)); }
       expBox.style.display='none'; recallBox.style.display='block'; recallInput.value=''; recallInput.focus();
     });
     scoreBtn && scoreBtn.addEventListener('click', ()=>{
@@ -211,7 +209,6 @@
         `<span class=\"small\">Target list: ${current.join(', ')}</span>`;
     });
 
-    // Quiz logic
     const choices=document.querySelectorAll('.choice');
     const quizMsg=document.getElementById('quizMsg');
     choices.forEach(btn=>{ btn.addEventListener('click',()=>{ const ok=btn.dataset.correct==='true'; choices.forEach(c=>c.disabled=true); btn.classList.add(ok?'correct':'wrong'); quizMsg.textContent= ok? 'Correct: TOK prefers claims supported by reliable processes and corroboration.' : 'Not quite. Clarity, repetition, or confidence alone do not guarantee knowledge.'; }); });
