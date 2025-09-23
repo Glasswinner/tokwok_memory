@@ -3,247 +3,148 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TOK • Way of Knowing: Memory</title>
+  <title>TOK · Way of Knowing: Memory</title>
   <style>
-    :root {
-      --bg: #0b0f1a;           /* dark mode default */
-      --card: #111729;
-      --text: #e7eefc;
-      --muted: #9db2ce;
-      --accent: #6aa7ff;
-      --accent-2: #9bffdf;
-      --danger: #ff6a6a;
-      --ok: #7dffa7;
+    :root{
+      --bg:#f7f9fc;        /* softer, modern light background */
+      --ink:#0e1a2b;       /* main text */
+      --muted:#546b8d;     /* secondary text */
+      --card:#ffffff;      /* cards */
+      --accent:#2b6cff;    /* blue accent */
+      --accent-2:#12a18d;  /* teal accent */
+      --border:#e6ecf5;    /* subtle borders */
     }
-    [data-theme="light"] {
-      --bg: #ffffff;
-      --card: #f4f7ff;
-      --text: #0b1220;
-      --muted: #465e84;
-      --accent: #2b6cff;
-      --accent-2: #12a18d;
-    }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-      background: radial-gradient(1200px 600px at 20% -10%, #1b2340 0, transparent 60%),
-                  radial-gradient(1000px 500px at 120% 10%, #0a2342 0, transparent 60%), var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-    }
-    header {
-      position: sticky; top: 0; z-index: 5;
-      background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.25)), var(--card);
-      backdrop-filter: blur(6px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 16px 20px; }
-    .title { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-    h1 { margin: 0; font-size: clamp(20px, 3.5vw, 34px); letter-spacing: .3px; }
-    nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-    nav a { text-decoration: none; color: var(--text); background: rgba(255,255,255,.06); padding: 8px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,.1); font-size: 14px; }
-    nav a:hover { background: rgba(255,255,255,.12); }
-    .btn { cursor: pointer; border: 1px solid rgba(255,255,255,.12); background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); color: var(--text); padding: 8px 14px; border-radius: 10px; }
-    .btn:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,.3); }
-
-    main { padding: 24px 20px 80px; }
-    section { border: 1px solid rgba(255,255,255,.1); background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03)); border-radius: 16px; padding: 18px; margin: 16px auto; max-width: 1100px; }
-    section h2 { margin-top: 0; font-size: 24px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
-    .card { background: var(--card); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 14px; }
-    .muted { color: var(--muted); }
-    .tag { display: inline-block; padding: 4px 8px; border-radius: 999px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.08); font-size: 12px; margin-right: 6px; }
-
-    /* image placeholders */
-    .image-slot { height: 160px; border: 2px dashed rgba(255,255,255,.25); border-radius: 12px; display: grid; place-items: center; color: var(--muted); font-size: 14px; }
-
-    /* accordion */
-    details { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 10px 12px; }
-    details + details { margin-top: 10px; }
-    summary { cursor: pointer; font-weight: 600; }
-
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans",sans-serif;background:var(--bg);color:var(--ink);}
+    header{position:sticky;top:0;z-index:5;background:linear-gradient(180deg,#ffffffef,#ffffffdd);border-bottom:1px solid var(--border)}
+    .wrap{max-width:1100px;margin:0 auto;padding:14px 18px}
+    h1{margin:0;line-height:1.15;font-weight:800;font-size:clamp(22px,5.5vw,40px);letter-spacing:.2px}
+    .subtitle{color:var(--muted);font-size:clamp(12px,2.5vw,14px);margin-top:4px}
+    main{padding:22px 18px 64px}
+    section{max-width:1100px;margin:16px auto;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:18px;box-shadow:0 6px 20px rgba(15,33,75,.06)}
+    section h2{margin:4px 0 8px;font-size:24px}
+    .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px}
+    .muted{color:var(--muted)}
+    .img-slot{height:180px;border:2px dashed var(--border);border-radius:12px;display:grid;place-items:center;color:var(--muted);font-size:14px;background:linear-gradient(180deg,#fafcff,#f7fbff)}
+    .tag{display:inline-block;padding:4px 8px;border-radius:999px;background:#eef4ff;border:1px solid var(--border);color:#2b5bd6;font-size:12px;margin-right:6px}
     /* quiz */
-    .quiz q { display: block; font-size: 18px; margin-bottom: 10px; }
-    .quiz .choices { display: grid; gap: 8px; }
-    .choice { padding: 10px 12px; border: 1px solid rgba(255,255,255,.12); border-radius: 10px; background: rgba(255,255,255,.04); cursor: pointer; }
-    .choice.correct { outline: 2px solid var(--ok); }
-    .choice.wrong { outline: 2px solid var(--danger); }
-
+    .quiz q{display:block;font-size:18px;margin-bottom:10px}
+    .quiz .choices{display:grid;gap:8px}
+    .choice{padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:#f8fbff;cursor:pointer}
+    .choice.correct{outline:2px solid #28c07f}
+    .choice.wrong{outline:2px solid #ff6a6a}
     /* experiment */
-    #experimentBox { display: none; gap: 8px; flex-wrap: wrap; }
-    .chip { padding: 6px 10px; border-radius: 10px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.1); }
-    .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-    .progress { height: 6px; background: rgba(255,255,255,.12); border-radius: 999px; overflow: hidden; }
-    .bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width .2s linear; }
-
-    footer { max-width: 1100px; margin: 28px auto; padding: 0 20px 60px; color: var(--muted); }
-    .ref { border-left: 3px solid rgba(255,255,255,.18); padding-left: 10px; margin: 10px 0; }
-    .small { font-size: 12px; }
+    .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .chip{padding:6px 10px;border-radius:10px;background:#eef4ff;border:1px solid var(--border)}
+    .progress{height:6px;background:#ebf1fb;border-radius:999px;overflow:hidden}
+    .bar{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .2s linear}
+    .btn{cursor:pointer;border:1px solid var(--border);background:linear-gradient(180deg,#ffffff,#f2f6ff);color:var(--ink);padding:8px 14px;border-radius:10px}
+    footer{max-width:1100px;margin:24px auto 60px;padding:0 18px;color:var(--muted)}
+    .small{font-size:12px}
   </style>
 </head>
 <body>
   <header>
     <div class="wrap">
-      <div class="title">
-        <h1>Way of Knowing: <span style="color:var(--accent)">Memory</span></h1>
-        <button id="themeBtn" class="btn" aria-label="Toggle theme">Toggle Theme</button>
-      </div>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#aoks">Alternate AOKs</a>
-        <a href="#themes">Themes</a>
-        <a href="#examples">Real‑World</a>
-        <a href="#perspectives">Perspectives</a>
-        <a href="#experiment">Mini‑Experiment</a>
-        <a href="#quiz">Quiz</a>
-        <a href="#refs">References</a>
-      </nav>
+      <h1>Way of Knowing: Memory</h1>
+      <div class="subtitle">Interactive extension to our presentation</div>
     </div>
   </header>
 
   <main>
+    <!-- ABOUT / INTRO -->
     <section id="about">
-      <h2>What counts as knowledge if it relies on memory?</h2>
-      <p>Memory links past experience to present claims. It can enable understanding, bias judgment, and shape identity. This page extends our presentation with interactive examples you can try on your phone (scan the QR your teacher provides) or on this device.</p>
+      <h2>What is, and how does memory relate to TOK?</h2>
+      <p>Memory is a storage system for our lives: experiences, lectures, and everything learned so far. Most of the time, we access knowledge <em>through</em> memory. Yet because memory is frequent, personal, and reconstructive, this storage system is often fallible and prone to bias. Theory of Knowledge examines how we acquire and justify knowledge—work that assumes we can store it, retrieve it, and critically evaluate how memory shapes what we claim to know.</p>
+
       <div class="grid">
+        <!-- Card 1: fallibility KQ with image BEFORE text -->
         <div class="card">
-          <div class="tag">Working memory</div>
-          <div class="tag">Long‑term</div>
-          <p class="muted">How capacity limits and rehearsal strategies change what we can justify as “known now”.</p>
-          <div class="image-slot">[ Add image or diagram here ]</div>
+          <div class="img-slot">[ image: <strong>wokone_web</strong> ]</div>
+          <h3 style="margin:10px 0 6px">To what extent is memory fallible in knowledge retention?</h3>
+          <p class="muted">Consider capacity limits, interference, rehearsal, and reconstruction.</p>
         </div>
+
+        <!-- Card 2: perspectives question -->
         <div class="card">
-          <div class="tag">Accuracy</div>
-          <div class="tag">Confidence</div>
-          <p class="muted">Confidence often rises faster than accuracy. Separating the two is a TOK move.</p>
-          <div class="image-slot">[ Add chart/photo here ]</div>
-        </div>
-        <div class="card">
-          <div class="tag">Individual ↔ Collective</div>
-          <p class="muted">Personal memories scale into collective narratives (“what our group remembers”), affecting what communities treat as knowledge.</p>
-          <div class="image-slot">[ Add collage here ]</div>
+          <h3>How does memory influence diverging perspectives on knowledge?</h3>
+          <p class="muted">Confidence ≠ accuracy; different encodings and retrieval cues can produce sincere but incompatible accounts.</p>
         </div>
       </div>
     </section>
 
+    <!-- ALTERNATE AOKS (ONLY 2) -->
     <section id="aoks">
-      <h2>Alternate Areas of Knowledge (not History or Human Sciences)</h2>
+      <h2>Alternate Areas of Knowledge</h2>
+      <div class="img-slot" style="margin-bottom:10px">[ image: <strong>woktwo_web</strong> ]</div>
       <div class="grid">
         <div class="card">
           <h3>Mathematics</h3>
-          <ul>
-            <li><strong>Knowledge Question:</strong> To what extent does memorized technique (e.g., identities, theorems) enable or constrain mathematical creativity?</li>
-            <li><em>Example:</em> Memorizing proof patterns (induction, contradiction) can speed discovery—but may also tunnel thinking.</li>
-          </ul>
-          <div class="image-slot">[ Proof sketch image ]</div>
+          <p class="muted"><span class="tag">KQ</span> To what extent does memorized technique (identities, proof patterns) enable or constrain mathematical creativity?</p>
+          <div class="img-slot">[ image: <strong>wokthree_web</strong> ]</div>
         </div>
         <div class="card">
           <h3>Natural Sciences</h3>
-          <ul>
-            <li><strong>Knowledge Question:</strong> How do lab notebooks function as external memory to secure reproducible knowledge?</li>
-            <li><em>Example:</em> Protocol memory vs. instrument logs; preregistered methods reduce reliance on fallible recall.</li>
-          </ul>
-          <div class="image-slot">[ Lab notebook photo ]</div>
-        </div>
-        <div class="card">
-          <h3>The Arts</h3>
-          <ul>
-            <li><strong>Knowledge Question:</strong> Is a performance “authentic” if the artist forgets and improvises?</li>
-            <li><em>Example:</em> Musicians using muscle memory vs. conscious recall; actors using cue memory.</li>
-          </ul>
-          <div class="image-slot">[ Stage/performance still ]</div>
-        </div>
-        <div class="card">
-          <h3>Ethics</h3>
-          <ul>
-            <li><strong>Knowledge Question:</strong> Should moral responsibility change as memory fades (forgiveness, amnesty, statutes of limitation)?</li>
-            <li><em>Example:</em> Debates on restorative justice rely on remembered harms and communal remembrance.</li>
-          </ul>
-          <div class="image-slot">[ Scales of justice icon ]</div>
-        </div>
-        <div class="card">
-          <h3>Indigenous Knowledge Systems</h3>
-          <ul>
-            <li><strong>Knowledge Question:</strong> How do oral traditions preserve knowledge without written records?</li>
-            <li><em>Example:</em> Songlines and storytelling as durable collective memory that encodes geography and custom.</li>
-          </ul>
-          <div class="image-slot">[ Pattern/art placeholder ]</div>
+          <p class="muted"><span class="tag">KQ</span> How do lab notebooks and preregistered methods serve as external memory to secure reproducible knowledge?</p>
+          <div class="img-slot">[ image: <strong>wokfour_web</strong> ]</div>
         </div>
       </div>
     </section>
 
+    <!-- THEMES: ONLY 2 -->
     <section id="themes">
-      <h2>Alternate TOK Themes involving Memory</h2>
+      <h2>Alternate TOK Themes Involving Memory</h2>
       <div class="grid">
         <div class="card">
-          <h3>Knowledge & the Knower</h3>
-          <p class="muted">How personal memory, bias, and emotion shape what we accept as true.</p>
+          <h3>Knowledge & Politics</h3>
+          <p class="muted">Collective remembrance, public memorials, and selective forgetting influence policy and identity.</p>
+          <div class="img-slot">[ image: <strong>wokfive_web</strong> ]</div>
         </div>
         <div class="card">
-          <h3>Knowledge & Language</h3>
-          <p class="muted">Mnemonics and metaphors store ideas; language can overwrite memories (“misinformation effect”).</p>
-        </div>
-        <div class="card">
-          <h3>Knowledge & Technology</h3>
-          <p class="muted">Search engines and phones act as <em>transactive memory</em>: we remember where to find facts more than facts themselves.</p>
-        </div>
-        <div class="card">
-          <h3>Knowledge & Religion / Indigenous societies</h3>
-          <p class="muted">Rituals preserve communal memory through repeated performance and shared symbols.</p>
+          <h3>Knowledge & Religion</h3>
+          <p class="muted">Rituals and liturgy act as communal memory, transmitting values across generations.</p>
+          <div class="img-slot">[ image: <strong>woksix_web</strong> ]</div>
         </div>
       </div>
     </section>
 
+    <!-- REAL WORLD EXAMPLES -->
     <section id="examples">
       <h2>Real‑World Examples</h2>
-      <details open>
-        <summary>Version control as memory (STEM)</summary>
-        <p>Git commits and lab notebooks create an auditable memory of changes—helping communities trust results without relying on individual recall.</p>
-      </details>
-      <details>
-        <summary>Muscle memory vs. explicit memory (Arts/Sports)</summary>
-        <p>Practiced routines free up attention for expression or strategy, but can also lock in errors (<em>overlearning</em>).</p>
-      </details>
-      <details>
-        <summary>Collective remembrance & ethics</summary>
-        <p>Public memorials encode shared memory and values; remembering or forgetting is a moral and political act.</p>
-      </details>
-      <div class="image-slot" style="margin-top:12px">[ Add collage of real‑world cases ]</div>
+      <div class="card">
+        <h3>Version control as external memory (STEM)</h3>
+        <p class="muted">Git commits and lab notebooks create an auditable memory of changes—helping communities trust results without relying on individual recall.</p>
+        <div class="img-slot">[ image: <strong>wokseven_web</strong> ]</div>
+      </div>
     </section>
 
+    <!-- PERSPECTIVES: ONLY 2 -->
     <section id="perspectives">
       <h2>Different Perspectives & Interpretations</h2>
       <div class="grid">
         <div class="card">
-          <h3>Reliabilist take</h3>
+          <h3>Reliabilist</h3>
           <p class="muted">A memory justifies belief when formed by reliable processes (e.g., spaced repetition, corroboration).</p>
         </div>
         <div class="card">
-          <h3>Constructivist take</h3>
-          <p class="muted">Memory is reconstructed; each retelling edits the past. Knowledge claims must account for this plasticity.</p>
-        </div>
-        <div class="card">
-          <h3>Pragmatist take</h3>
-          <p class="muted">“True enough” memory is what lets us act successfully; usefulness can outrank perfect accuracy.</p>
-        </div>
-        <div class="card">
-          <h3>AI vs. Human memory</h3>
-          <p class="muted">Machines store exactly but lack meaning; humans forget but can prioritize significance.</p>
+          <h3>Constructivist</h3>
+          <p class="muted">Memory is reconstructed at recall; retelling edits the past. Knowledge claims must account for this plasticity.</p>
         </div>
       </div>
     </section>
 
+    <!-- MINI MEMORY EXPERIMENT (kept) -->
     <section id="experiment">
       <h2>Try it: Mini Memory Experiment</h2>
-      <p class="muted">Test the <em>primacy/recency</em> idea. You'll see words briefly. Then, type as many as you remember—in any order. This simulates how presentation order affects recall.</p>
+      <p class="muted">Test the <em>primacy/recency</em> idea. You'll see words briefly. Then type as many as you remember—in any order.</p>
       <div class="row">
         <label>List length <input id="len" type="range" min="5" max="15" value="8" /></label>
         <label>Show time (ms/word) <input id="speed" type="range" min="300" max="1500" step="100" value="700" /></label>
         <button class="btn" id="startBtn">Start</button>
       </div>
       <div class="progress" style="margin:10px 0 6px"><div class="bar" id="bar"></div></div>
-      <div id="experimentBox" class="row"></div>
+      <div id="experimentBox" class="row" style="display:none"></div>
       <div id="recallBox" style="display:none; margin-top:10px">
         <input id="recallInput" class="btn" style="width:100%; padding:12px; text-align:left" placeholder="Type the words you remember, separated by spaces…" />
         <button class="btn" id="scoreBtn" style="margin-top:8px">Score</button>
@@ -251,6 +152,7 @@
       </div>
     </section>
 
+    <!-- QUIZ (kept) -->
     <section id="quiz" class="quiz">
       <h2>1‑Minute Quiz</h2>
       <q>Which claim best fits TOK when evaluating memory‑based knowledge?</q>
@@ -263,128 +165,56 @@
       <p class="muted small" id="quizMsg" role="status"></p>
     </section>
 
-    <section>
-      <h2>Make your own example</h2>
-      <p>Add an AOK + memory scenario below. Your example will render as a shareable card.</p>
-      <div class="row" style="margin:8px 0">
-        <input id="aokIn" placeholder="AOK (e.g., Mathematics)" class="btn" />
-        <input id="kqIn" placeholder="Knowledge Question" class="btn" style="flex:1" />
-        <button id="addCard" class="btn">Add</button>
-      </div>
-      <div id="customCards" class="grid"></div>
-    </section>
-
+    <!-- REFERENCES ONLY (everything under Make‑your‑own removed) -->
     <section id="refs">
       <h2>References & Attributions</h2>
-      <div class="ref">Define your own list of sources here (articles, textbooks, videos). Include image credits for anything you add to the image slots.</div>
-      <div class="ref"><strong>AI assistance:</strong> This page’s structure and code were drafted with help from AI (e.g., ChatGPT / GitHub Copilot). Add your course‑required citation style here.</div>
-      <div class="ref">Optional: Class slides or readings on memory reliability, external memory systems (lab notebooks, version control), and collective remembrance.</div>
+      <div class="card">
+        <p><strong>AI assistance:</strong> Structure and code drafted with help from AI (e.g., ChatGPT / GitHub Copilot). Add your course‑required citation format and all outside sources here. Replace image slots with your files named as indicated above.</p>
+      </div>
     </section>
   </main>
 
   <footer class="small">
-    <p>Tip: Replace the <em>image slots</em> with your own visuals before presentation day. Keep the QR to this page handy so peers can try the experiment.</p>
+    <div class="wrap">This page is designed for quick GitHub Pages deployment. Drop images with the exact filenames (e.g., <code>wokone_web</code>, <code>woktwo_web</code>, …) into the same folder as <code>index.html</code>.</div>
   </footer>
 
   <script>
-    // Theme toggle
-    const themeBtn = document.getElementById('themeBtn');
-    themeBtn.addEventListener('click', () => {
-      const light = document.body.getAttribute('data-theme') === 'light';
-      document.body.setAttribute('data-theme', light ? 'dark' : 'light');
-      themeBtn.textContent = light ? 'Toggle Theme' : 'Toggle Theme';
-    });
-
-    // Mini memory experiment
+    // Mini memory experiment logic (unchanged)
     const WORDS = "river cloud magnet citrus canvas orbit velvet prism echo summit coral timber comet ember linen quartz polar canyon neon ivy aurora spiral delta fig willow cedar pixel auric drift".split(" ");
-    const pickWords = (n)=>{
-      const pool = [...WORDS];
-      const chosen = [];
-      while (chosen.length < n && pool.length) {
-        const i = Math.floor(Math.random()*pool.length);
-        chosen.push(pool.splice(i,1)[0]);
-      }
-      return chosen;
-    };
-
-    const startBtn = document.getElementById('startBtn');
-    const expBox = document.getElementById('experimentBox');
-    const recallBox = document.getElementById('recallBox');
-    const recallInput = document.getElementById('recallInput');
-    const scoreBtn = document.getElementById('scoreBtn');
-    const scoreOut = document.getElementById('scoreOut');
-    const len = document.getElementById('len');
-    const speed = document.getElementById('speed');
-    const bar = document.getElementById('bar');
-
-    let current = [];
-
-    startBtn.addEventListener('click', async ()=>{
-      expBox.style.display = 'flex';
-      recallBox.style.display = 'none';
-      scoreOut.textContent = '';
-      expBox.innerHTML = '';
-      const N = parseInt(len.value,10);
-      const S = parseInt(speed.value,10);
-      current = pickWords(N);
-      const total = N * S;
-      let shown = 0;
-      for (let w of current) {
-        expBox.innerHTML = `<span class="chip">${w}</span>`;
-        shown += S;
-        bar.style.width = Math.min(100, (shown/total)*100) + '%';
-        await new Promise(r => setTimeout(r, S));
-      }
-      expBox.style.display = 'none';
-      recallBox.style.display = 'block';
-      recallInput.value = '';
-      recallInput.focus();
+    const pickWords = n => { const pool=[...WORDS]; const chosen=[]; while(chosen.length<n && pool.length){ const i=Math.floor(Math.random()*pool.length); chosen.push(pool.splice(i,1)[0]); } return chosen; };
+    const startBtn=document.getElementById('startBtn');
+    const expBox=document.getElementById('experimentBox');
+    const recallBox=document.getElementById('recallBox');
+    const recallInput=document.getElementById('recallInput');
+    const scoreBtn=document.getElementById('scoreBtn');
+    const scoreOut=document.getElementById('scoreOut');
+    const len=document.getElementById('len');
+    const speed=document.getElementById('speed');
+    const bar=document.getElementById('bar');
+    let current=[];
+    startBtn && startBtn.addEventListener('click', async ()=>{
+      expBox.style.display='flex'; recallBox.style.display='none'; scoreOut.textContent=''; expBox.innerHTML='';
+      const N=parseInt(len.value,10); const S=parseInt(speed.value,10); current=pickWords(N); const total=N*S; let shown=0;
+      for (let w of current){ expBox.innerHTML=`<span class="chip">${w}</span>`; shown+=S; bar.style.width=Math.min(100,(shown/total)*100)+'%'; await new Promise(r=>setTimeout(r,S)); }
+      expBox.style.display='none'; recallBox.style.display='block'; recallInput.value=''; recallInput.focus();
     });
-
-    scoreBtn.addEventListener('click', ()=>{
-      const typed = recallInput.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
-      if (!typed.length) return;
-      const set = new Set(current.map(w=>w.toLowerCase()));
-      const correct = typed.filter(w=> set.has(w));
-
-      // Primacy/recency check (first 2 and last 2 positions)
-      const first = new Set(current.slice(0,2).map(w=>w.toLowerCase()));
-      const last  = new Set(current.slice(-2).map(w=>w.toLowerCase()));
-      const gotFirst = typed.some(w=> first.has(w));
-      const gotLast  = typed.some(w=> last.has(w));
-
-      scoreOut.innerHTML = `You recalled <strong>${correct.length}/${current.length}</strong> words. ` +
-        `<span class="muted">Primacy: ${gotFirst? '✓' : '—'} | Recency: ${gotLast? '✓' : '—'}</span><br>` +
+    scoreBtn && scoreBtn.addEventListener('click', ()=>{
+      const typed=recallInput.value.trim().toLowerCase().split(/\s+/).filter(Boolean); if(!typed.length) return;
+      const set=new Set(current.map(w=>w.toLowerCase()));
+      const correct=typed.filter(w=>set.has(w));
+      const first=new Set(current.slice(0,2).map(w=>w.toLowerCase()));
+      const last=new Set(current.slice(-2).map(w=>w.toLowerCase()));
+      const gotFirst=typed.some(w=>first.has(w));
+      const gotLast=typed.some(w=>last.has(w));
+      scoreOut.innerHTML=`You recalled <strong>${correct.length}/${current.length}</strong> words. `+
+        `<span class="muted">Primacy: ${gotFirst? '✓':'—'} | Recency: ${gotLast? '✓':'—'}</span><br>`+
         `<span class="small">Target list: ${current.join(', ')}</span>`;
     });
 
     // Quiz logic
-    const choices = document.querySelectorAll('.choice');
-    const quizMsg = document.getElementById('quizMsg');
-    choices.forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const ok = btn.dataset.correct === 'true';
-        choices.forEach(c=>{ c.disabled = true; });
-        btn.classList.add(ok ? 'correct' : 'wrong');
-        quizMsg.textContent = ok ? 'Correct: TOK prefers claims supported by reliable processes and corroboration.' : 'Not quite. Clarity, repetition, or confidence alone do not guarantee knowledge.';
-      });
-    });
-
-    // Custom card builder
-    const aokIn = document.getElementById('aokIn');
-    const kqIn = document.getElementById('kqIn');
-    const addBtn = document.getElementById('addCard');
-    const custom = document.getElementById('customCards');
-    addBtn.addEventListener('click', ()=>{
-      const a = aokIn.value.trim();
-      const k = kqIn.value.trim();
-      if(!a || !k) return;
-      const el = document.createElement('div');
-      el.className='card';
-      el.innerHTML = `<h3>${a}</h3><p class="muted">${k}</p><div class="image-slot">[ Add image for your example ]</div>`;
-      custom.prepend(el);
-      aokIn.value=''; kqIn.value='';
-    });
+    const choices=document.querySelectorAll('.choice');
+    const quizMsg=document.getElementById('quizMsg');
+    choices.forEach(btn=>{ btn.addEventListener('click',()=>{ const ok=btn.dataset.correct==='true'; choices.forEach(c=>c.disabled=true); btn.classList.add(ok?'correct':'wrong'); quizMsg.textContent= ok? 'Correct: TOK prefers claims supported by reliable processes and corroboration.' : 'Not quite. Clarity, repetition, or confidence alone do not guarantee knowledge.'; }); });
   </script>
 </body>
 </html>
