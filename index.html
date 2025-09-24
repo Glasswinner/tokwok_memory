@@ -14,8 +14,7 @@
       --accent-2:#12a18d;
       --border:#c9d6f2;
       --darkblue:#0b1d46;
-      /* control image max height (feel free to adjust) */
-      --img-max-h: 420px;
+      --img-max-h: 420px; /* default max height for all images */
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans",sans-serif;background:var(--bg);color:var(--ink);}
@@ -30,7 +29,7 @@
     .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;box-shadow:0 2px 6px rgba(11,29,70,.05)}
     .muted{color:var(--muted)}
 
-    /* ===== Image slots: no cropping, always show full image ===== */
+    /* ===== Image slots ===== */
     .img-slot{
       width:100%;
       border:2px dashed var(--border);
@@ -41,18 +40,19 @@
       color:var(--muted);
       font-size:14px;
       background:#ffffff;
-      padding:8px;               /* a little breathing room for “contain” */
+      padding:8px;
     }
     .img-slot img{
-      width:100%;
-      height:auto;               /* keep aspect ratio */
-      max-height:var(--img-max-h);
-      object-fit:contain;        /* show the whole image */
-      object-position:center;
-      border-radius:10px;
-      display:block;
+      max-height: var(--img-max-h, 420px); /* default size */
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 10px;
+      display: block;
+      margin: auto;
     }
-    /* (Optional) keep if you like the softer backdrop behind the brain image */
     .img-slot[data-img="wokone_web"] img{ background:#f7faff; }
 
     .tag{display:inline-block;padding:4px 8px;border-radius:999px;background:var(--darkblue);color:#ffffff;font-size:12px;margin-right:6px}
@@ -108,7 +108,7 @@
           <div class="img-slot" data-img="wokfour_web"></div>
         </div>
         <div class="card">
-          <h3 style="color:var(--darkblue)">Natural Sciences</h3>
+          <h3 style="color:var(--darkblue)">Natural Sciences</h3>a
           <p class="muted"><span class="tag">KQ</span> How do observations of natural phenomenon contribute towards paradigm developments in the natural sciences?</p>
           <div class="img-slot" data-img="wokfive_web"></div>
         </div>
@@ -136,7 +136,8 @@
       <div class="card">
         <h3 style="color:var(--darkblue)">Mandela Effect</h3>
         <p class="muted">The Mandela effect is perhaps the most famous example of memory's weaknesses.</p>
-        <div class="img-slot" data-img="wokeight_web"></div>
+        <!-- 👇 Mandela override -->
+        <div class="img-slot" data-img="wokeight_web" style="--img-max-h:320px; --img-max-w:900px"></div>
       </div>
     </section>
 
