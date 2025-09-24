@@ -14,6 +14,8 @@
       --accent-2:#12a18d;
       --border:#c9d6f2;
       --darkblue:#0b1d46;
+      /* control image max height (feel free to adjust) */
+      --img-max-h: 420px;
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans",sans-serif;background:var(--bg);color:var(--ink);}
@@ -27,10 +29,32 @@
     .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
     .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;box-shadow:0 2px 6px rgba(11,29,70,.05)}
     .muted{color:var(--muted)}
-    .img-slot{width:100%;aspect-ratio:4/3;border:2px dashed var(--border);border-radius:12px;display:grid;place-items:center;color:var(--muted);font-size:14px;background:#ffffff;overflow:hidden}
-    .img-slot img{width:100%;height:100%;object-fit:cover;object-position:center;border-radius:12px}
-    /* Ensure the brain image is fully visible */
-    .img-slot[data-img="wokone_web"] img{object-fit:contain;background:#f7faff}
+
+    /* ===== Image slots: no cropping, always show full image ===== */
+    .img-slot{
+      width:100%;
+      border:2px dashed var(--border);
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--muted);
+      font-size:14px;
+      background:#ffffff;
+      padding:8px;               /* a little breathing room for “contain” */
+    }
+    .img-slot img{
+      width:100%;
+      height:auto;               /* keep aspect ratio */
+      max-height:var(--img-max-h);
+      object-fit:contain;        /* show the whole image */
+      object-position:center;
+      border-radius:10px;
+      display:block;
+    }
+    /* (Optional) keep if you like the softer backdrop behind the brain image */
+    .img-slot[data-img="wokone_web"] img{ background:#f7faff; }
+
     .tag{display:inline-block;padding:4px 8px;border-radius:999px;background:var(--darkblue);color:#ffffff;font-size:12px;margin-right:6px}
     .quiz q{display:block;font-size:18px;margin-bottom:10px;color:var(--darkblue)}
     .quiz .choices{display:grid;gap:8px}
@@ -69,7 +93,7 @@
         <div class="card">
           <div class="img-slot" data-img="woktwo_web"></div>
           <h3 style="color:var(--darkblue)">How does memory influence diverging perspectives on knowledge?</h3>
-          <p class="muted">Confidence in recollection is not indicative of accuracy. Often, memory propogates diverging perspectives, with different recollections leading to different assumptions.</p>
+          <p class="muted">Confidence in recollection is not indicative of accuracy. Often, memory propagates diverging perspectives, with different recollections leading to different assumptions.</p>
         </div>
       </div>
     </section>
@@ -108,10 +132,10 @@
     </section>
 
     <section id="examples">
-      <h2>Real‑World Examples</h2>
+      <h2>Real-World Examples</h2>
       <div class="card">
         <h3 style="color:var(--darkblue)">Mandela Effect</h3>
-        <p class="muted">The mandela effect is perhaps the most famous example of memory's weaknesses.</p>
+        <p class="muted">The Mandela effect is perhaps the most famous example of memory's weaknesses.</p>
         <div class="img-slot" data-img="wokeight_web"></div>
       </div>
     </section>
@@ -121,11 +145,11 @@
       <div class="grid">
         <div class="card">
           <h3 style="color:var(--darkblue)">Schema Theory</h3>
-          <p class="muted">Barlett hypothesizes memory works through schemas--mental webs and frameworks that interpret the world, yet propogate bias.</p>
+          <p class="muted">Bartlett hypothesizes memory works through schemas—mental frameworks that help interpret the world but can also introduce bias.</p>
         </div>
         <div class="card">
-          <h3 style="color:var(--darkblue)">Multi-store model</h3>
-          <p class="muted">Atkinson proposes memory as a process in stages: from sensory, to short-term, to long-term. He does ignore the complexity of memory, however. </p>
+          <h3 style="color:var(--darkblue)">Multi-Store Model</h3>
+          <p class="muted">Atkinson &amp; Shiffrin propose memory as a process with stages—sensory, short-term, and long-term—though this can simplify the system’s complexity.</p>
         </div>
       </div>
     </section>
@@ -148,8 +172,8 @@
     </section>
 
     <section id="quiz" class="quiz">
-      <h2>1‑Minute Quiz</h2>
-      <q>Which claim best fits TOK when evaluating memory‑based knowledge?</q>
+      <h2>1-Minute Quiz</h2>
+      <q>Which claim best fits TOK when evaluating memory-based knowledge?</q>
       <div class="choices">
         <button class="choice" data-correct="false">A. I'm always right! My memory is definitely perfect!</button>
         <button class="choice" data-correct="true">B. A memory claim is stronger when validated by external sources, like research.</button>
@@ -162,13 +186,18 @@
     <section id="refs">
       <h2>References & Attributions</h2>
       <div class="card">
-        <p><strong>AI assistance:</strong> ChatGPT aided in making the 1-Minute Quiz. Images are AI Generated.</p>
+        <p><strong>Schema Theory</strong> — Bartlett, Frederic C. <em>Remembering: A Study in Experimental and Social Psychology</em>. Cambridge University Press, 1932. Overview and context from <a href="https://www.britannica.com/topic/memory-psychology" target="_blank" rel="noopener">Encyclopaedia Britannica: “Memory”</a>.</p>
+
+        <p><strong>Multi-Store Model</strong> — Atkinson, Richard C., and Shiffrin, Richard M. “Human Memory: A Proposed System and Its Control Processes.” In <em>The Psychology of Learning and Motivation</em>, vol. 2, 1968. General summaries available in <a href="https://www.britannica.com/topic/memory-psychology" target="_blank" rel="noopener">Encyclopaedia Britannica: “Memory”</a>.</p>
+
+        <p><strong>AI Assistance</strong> — Portions of copy (e.g., quiz text) were assisted by OpenAI <em>ChatGPT (GPT-5)</em>. <br>
+        <strong>Images</strong> — Illustrations on this page were generated with OpenAI’s image model (DALL·E). Alt text and layout authored by the page creators.</p>
       </div>
     </section>
   </main>
 
   <footer class="small">
-    <div class="wrap">This page is designed for quick GitHub Pages deployment. Drop images with the exact filenames (e.g., <code>wokone_web</code>, <code>woktwo_web</code>, …) into the same folder as <code>index.html</code>.</div>
+    <div class="wrap">© 2025 • Educational resource for Theory of Knowledge.</div>
   </footer>
 
   <script>
@@ -187,7 +216,11 @@
     startBtn && startBtn.addEventListener('click', async ()=>{
       expBox.style.display='flex'; recallBox.style.display='none'; scoreOut.textContent=''; expBox.innerHTML='';
       const N=parseInt(len.value,10); const S=parseInt(speed.value,10); current=pickWords(N); const total=N*S; let shown=0;
-      for (let w of current){ expBox.innerHTML=`<span class=\"chip\">${w}</span>`; shown+=S; bar.style.width=Math.min(100,(shown/total)*100)+'%'; await new Promise(r=>setTimeout(r,S)); }
+      for (let w of current){
+        expBox.innerHTML=`<span class="chip">${w}</span>`;
+        shown+=S; bar.style.width=Math.min(100,(shown/total)*100)+'%';
+        await new Promise(r=>setTimeout(r,S));
+      }
       expBox.style.display='none'; recallBox.style.display='block'; recallInput.value=''; recallInput.focus();
     });
     scoreBtn && scoreBtn.addEventListener('click', ()=>{
@@ -199,13 +232,22 @@
       const gotFirst=typed.some(w=>first.has(w));
       const gotLast=typed.some(w=>last.has(w));
       scoreOut.innerHTML=`You recalled <strong>${correct.length}/${current.length}</strong> words. `+
-        `<span class=\"muted\">Primacy: ${gotFirst? '✓':'—'} | Recency: ${gotLast? '✓':'—'}</span><br>`+
-        `<span class=\"small\">Target list: ${current.join(', ')}</span>`;
+        `<span class="muted">Primacy: ${gotFirst? '✓':'—'} | Recency: ${gotLast? '✓':'—'}</span><br>`+
+        `<span class="small">Target list: ${current.join(', ')}</span>`;
     });
 
     const choices=document.querySelectorAll('.choice');
     const quizMsg=document.getElementById('quizMsg');
-    choices.forEach(btn=>{ btn.addEventListener('click',()=>{ const ok=btn.dataset.correct==='true'; choices.forEach(c=>c.disabled=true); btn.classList.add(ok?'correct':'wrong'); quizMsg.textContent= ok? 'Correct: TOK prefers claims supported by reliable processes and corroboration.' : 'Not quite. Clarity, repetition, or confidence alone do not guarantee knowledge.'; }); });
+    choices.forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const ok=btn.dataset.correct==='true';
+        choices.forEach(c=>c.disabled=true);
+        btn.classList.add(ok?'correct':'wrong');
+        quizMsg.textContent= ok
+          ? 'Correct: TOK prefers claims supported by reliable processes and corroboration.'
+          : 'Not quite. Clarity, repetition, or confidence alone do not guarantee knowledge.';
+      });
+    });
 
     // Auto-load images dynamically (no extensions hardcoded)
     function tryLoad(slot, base, exts){
