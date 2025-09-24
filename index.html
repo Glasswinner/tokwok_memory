@@ -40,12 +40,7 @@
       background:#ffffff;
       overflow:hidden;
     }
-    .img-slot img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      border-radius:12px;
-    }
+    .img-slot img{\n      width:100%;\n      height:100%;\n      object-fit:cover;\n      border-radius:12px;\n    }\n    /* Nudge the brain image down so bottom isn't cropped */\n    .img-slot[data-img="wokone_web"] img{\n      object-position:center 65%;\n    }
     .tag{display:inline-block;padding:4px 8px;border-radius:999px;background:var(--darkblue);color:#ffffff;font-size:12px;margin-right:6px}
     .quiz q{display:block;font-size:18px;margin-bottom:10px;color:var(--darkblue)}
     .quiz .choices{display:grid;gap:8px}
@@ -81,8 +76,7 @@
           <h3 style="margin:10px 0 6px;color:var(--darkblue)">To what extent is memory fallible in knowledge retention?</h3>
           <p class="muted">Consider capacity limits, interference, rehearsal, and reconstruction.</p>
         </div>
-        <div class="card">
-          <h3 style="color:var(--darkblue)">How does memory influence diverging perspectives on knowledge?</h3>
+        <div class="card">\n          <div class="img-slot" data-img="woktwo_web">[ image placeholder ]</div>\n          <h3 style="color:var(--darkblue)">How does memory influence diverging perspectives on knowledge?</h3>
           <p class="muted">Confidence ≠ accuracy; different encodings and retrieval cues can produce sincere but incompatible accounts.</p>
         </div>
       </div>
@@ -90,7 +84,7 @@
 
     <section id="aoks">
       <h2>Alternate Areas of Knowledge</h2>
-      <div class="img-slot" data-img="woktwo_web">[ image placeholder ]</div>
+      <div class="img-slot" data-img="wokaoks_web">[ image placeholder ]</div>
       <div class="grid">
         <div class="card">
           <h3 style="color:var(--darkblue)">Mathematics</h3>
