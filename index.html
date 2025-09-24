@@ -14,7 +14,8 @@
       --accent-2:#12a18d;
       --border:#c9d6f2;
       --darkblue:#0b1d46;
-      --img-max-h: 420px; /* default max height for all images */
+      /* default image frame ratio (can be overridden per slot) */
+      --slot-ar: 4/3;
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans",sans-serif;background:var(--bg);color:var(--ink);}
@@ -29,9 +30,10 @@
     .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;box-shadow:0 2px 6px rgba(11,29,70,.05)}
     .muted{color:var(--muted)}
 
-    /* ===== Image slots ===== */
+    /* ===== Image slots: fill card, no cropping ===== */
     .img-slot{
       width:100%;
+      aspect-ratio: var(--slot-ar); /* default 4:3 frame; override per-slot */
       border:2px dashed var(--border);
       border-radius:12px;
       display:flex;
@@ -40,19 +42,17 @@
       color:var(--muted);
       font-size:14px;
       background:#ffffff;
-      padding:8px;
+      padding:8px; /* slight inset so contain has breathing room */
     }
     .img-slot img{
-      max-height: var(--img-max-h, 420px); /* default size */
-      max-width: 100%;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      object-position: center;
-      border-radius: 10px;
-      display: block;
-      margin: auto;
+      width:100%;
+      height:100%;
+      object-fit:contain;    /* show entire image; never crop */
+      object-position:center;
+      border-radius:10px;
+      display:block;
     }
+    /* Optional softer backdrop for the brain image */
     .img-slot[data-img="wokone_web"] img{ background:#f7faff; }
 
     .tag{display:inline-block;padding:4px 8px;border-radius:999px;background:var(--darkblue);color:#ffffff;font-size:12px;margin-right:6px}
@@ -136,8 +136,8 @@
       <div class="card">
         <h3 style="color:var(--darkblue)">Mandela Effect</h3>
         <p class="muted">The Mandela effect is perhaps the most famous example of memory's weaknesses.</p>
-        <!-- 👇 Mandela override -->
-        <div class="img-slot" data-img="wokeight_web" style="--img-max-h:320px; --img-max-w:900px"></div>
+        <!-- Wider horizontal frame just for Mandela -->
+        <div class="img-slot" data-img="wokeight_web" style="--slot-ar: 16/9"></div>
       </div>
     </section>
 
