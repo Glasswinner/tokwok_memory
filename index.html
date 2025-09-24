@@ -29,7 +29,8 @@
     .muted{color:var(--muted)}
     .img-slot{width:100%;aspect-ratio:4/3;border:2px dashed var(--border);border-radius:12px;display:grid;place-items:center;color:var(--muted);font-size:14px;background:#ffffff;overflow:hidden}
     .img-slot img{width:100%;height:100%;object-fit:cover;object-position:center;border-radius:12px}
-    .img-slot[data-img="wokone_web"] img{object-position:center 65%}
+    /* Ensure the brain image is fully visible */
+    .img-slot[data-img="wokone_web"] img{object-fit:contain;background:#f7faff}
     .tag{display:inline-block;padding:4px 8px;border-radius:999px;background:var(--darkblue);color:#ffffff;font-size:12px;margin-right:6px}
     .quiz q{display:block;font-size:18px;margin-bottom:10px;color:var(--darkblue)}
     .quiz .choices{display:grid;gap:8px}
@@ -80,12 +81,12 @@
         <div class="card">
           <h3 style="color:var(--darkblue)">Mathematics</h3>
           <p class="muted"><span class="tag">KQ</span> To what extent does memorized technique (identities, proof patterns) enable or constrain mathematical creativity?</p>
-          <div class="img-slot" data-img="wokthree_web"></div>
+          <div class="img-slot" data-img="wokfour_web"></div>
         </div>
         <div class="card">
           <h3 style="color:var(--darkblue)">Natural Sciences</h3>
           <p class="muted"><span class="tag">KQ</span> How do lab notebooks and preregistered methods serve as external memory to secure reproducible knowledge?</p>
-          <div class="img-slot" data-img="wokfour_web"></div>
+          <div class="img-slot" data-img="wokthree_web"></div>
         </div>
       </div>
     </section>
