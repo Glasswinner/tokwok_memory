@@ -77,7 +77,7 @@
 
       <div class="grid">
         <div class="card">
-          <div class="img-slot">[ image: <strong>wokone_web</strong> ]</div>
+          <div class="img-slot" data-img="wokone_web">[ image placeholder ]</div>
           <h3 style="margin:10px 0 6px;color:var(--darkblue)">To what extent is memory fallible in knowledge retention?</h3>
           <p class="muted">Consider capacity limits, interference, rehearsal, and reconstruction.</p>
         </div>
@@ -90,17 +90,17 @@
 
     <section id="aoks">
       <h2>Alternate Areas of Knowledge</h2>
-      <div class="img-slot">[ image: <strong>woktwo_web</strong> ]</div>
+      <div class="img-slot" data-img="woktwo_web">[ image placeholder ]</div>
       <div class="grid">
         <div class="card">
           <h3 style="color:var(--darkblue)">Mathematics</h3>
           <p class="muted"><span class="tag">KQ</span> To what extent does memorized technique (identities, proof patterns) enable or constrain mathematical creativity?</p>
-          <div class="img-slot">[ image: <strong>wokthree_web</strong> ]</div>
+          <div class="img-slot" data-img="wokthree_web">[ image placeholder ]</div>
         </div>
         <div class="card">
           <h3 style="color:var(--darkblue)">Natural Sciences</h3>
           <p class="muted"><span class="tag">KQ</span> How do lab notebooks and preregistered methods serve as external memory to secure reproducible knowledge?</p>
-          <div class="img-slot">[ image: <strong>wokfour_web</strong> ]</div>
+          <div class="img-slot" data-img="wokfour_web">[ image placeholder ]</div>
         </div>
       </div>
     </section>
@@ -111,12 +111,12 @@
         <div class="card">
           <h3 style="color:var(--darkblue)">Knowledge & Politics</h3>
           <p class="muted">Collective remembrance, public memorials, and selective forgetting influence policy and identity.</p>
-          <div class="img-slot">[ image: <strong>wokfive_web</strong> ]</div>
+          <div class="img-slot" data-img="wokfive_web">[ image placeholder ]</div>
         </div>
         <div class="card">
           <h3 style="color:var(--darkblue)">Knowledge & Religion</h3>
           <p class="muted">Rituals and liturgy act as communal memory, transmitting values across generations.</p>
-          <div class="img-slot">[ image: <strong>woksix_web</strong> ]</div>
+          <div class="img-slot" data-img="woksix_web">[ image placeholder ]</div>
         </div>
       </div>
     </section>
@@ -126,7 +126,7 @@
       <div class="card">
         <h3 style="color:var(--darkblue)">Version control as external memory (STEM)</h3>
         <p class="muted">Git commits and lab notebooks create an auditable memory of changes—helping communities trust results without relying on individual recall.</p>
-        <div class="img-slot">[ image: <strong>wokseven_web</strong> ]</div>
+        <div class="img-slot" data-img="wokseven_web">[ image placeholder ]</div>
       </div>
     </section>
 
@@ -220,6 +220,19 @@
     const choices=document.querySelectorAll('.choice');
     const quizMsg=document.getElementById('quizMsg');
     choices.forEach(btn=>{ btn.addEventListener('click',()=>{ const ok=btn.dataset.correct==='true'; choices.forEach(c=>c.disabled=true); btn.classList.add(ok?'correct':'wrong'); quizMsg.textContent= ok? 'Correct: TOK prefers claims supported by reliable processes and corroboration.' : 'Not quite. Clarity, repetition, or confidence alone do not guarantee knowledge.'; }); });
+  // Auto-load images by base name (no extension in HTML). Put files like wokone_web.png/jpg/webp next to index.html.
+    function tryLoad(slot, base, exts){
+      if(!exts.length) return; const ext = exts[0];
+      const img = new Image();
+      img.onload = ()=>{ slot.innerHTML=''; slot.appendChild(img); };
+      img.onerror = ()=> tryLoad(slot, base, exts.slice(1));
+      img.src = `${base}${ext}`;
+      img.alt = base;
+    }
+    document.querySelectorAll('.img-slot[data-img]').forEach(slot=>{
+      const base = slot.getAttribute('data-img');
+      tryLoad(slot, base, ['.webp','.png','.jpg','.jpeg']);
+    });
   </script>
 </body>
 </html>
