@@ -27,20 +27,9 @@
     .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
     .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;box-shadow:0 2px 6px rgba(11,29,70,.05)}
     .muted{color:var(--muted)}
-    /* Updated image slots */
-    .img-slot{
-      width:100%;
-      aspect-ratio: 4 / 3; /* consistent rectangle shape */
-      border:2px dashed var(--border);
-      border-radius:12px;
-      display:grid;
-      place-items:center;
-      color:var(--muted);
-      font-size:14px;
-      background:#ffffff;
-      overflow:hidden;
-    }
-    .img-slot img{\n      width:100%;\n      height:100%;\n      object-fit:cover;\n      border-radius:12px;\n    }\n    /* Nudge the brain image down so bottom isn't cropped */\n    .img-slot[data-img="wokone_web"] img{\n      object-position:center 65%;\n    }
+    .img-slot{width:100%;aspect-ratio:4/3;border:2px dashed var(--border);border-radius:12px;display:grid;place-items:center;color:var(--muted);font-size:14px;background:#ffffff;overflow:hidden}
+    .img-slot img{width:100%;height:100%;object-fit:cover;object-position:center;border-radius:12px}
+    .img-slot[data-img="wokone_web"] img{object-position:center 65%}
     .tag{display:inline-block;padding:4px 8px;border-radius:999px;background:var(--darkblue);color:#ffffff;font-size:12px;margin-right:6px}
     .quiz q{display:block;font-size:18px;margin-bottom:10px;color:var(--darkblue)}
     .quiz .choices{display:grid;gap:8px}
@@ -72,11 +61,13 @@
 
       <div class="grid">
         <div class="card">
-          <div class="img-slot" data-img="wokone_web">[ image placeholder ]</div>
+          <div class="img-slot" data-img="wokone_web"></div>
           <h3 style="margin:10px 0 6px;color:var(--darkblue)">To what extent is memory fallible in knowledge retention?</h3>
           <p class="muted">Consider capacity limits, interference, rehearsal, and reconstruction.</p>
         </div>
-        <div class="card">\n          <div class="img-slot" data-img="woktwo_web">[ image placeholder ]</div>\n          <h3 style="color:var(--darkblue)">How does memory influence diverging perspectives on knowledge?</h3>
+        <div class="card">
+          <div class="img-slot" data-img="woktwo_web"></div>
+          <h3 style="color:var(--darkblue)">How does memory influence diverging perspectives on knowledge?</h3>
           <p class="muted">Confidence ≠ accuracy; different encodings and retrieval cues can produce sincere but incompatible accounts.</p>
         </div>
       </div>
@@ -84,17 +75,17 @@
 
     <section id="aoks">
       <h2>Alternate Areas of Knowledge</h2>
-      <div class="img-slot" data-img="wokaoks_web">[ image placeholder ]</div>
+      <div class="img-slot" data-img="wokaoks_web"></div>
       <div class="grid">
         <div class="card">
           <h3 style="color:var(--darkblue)">Mathematics</h3>
           <p class="muted"><span class="tag">KQ</span> To what extent does memorized technique (identities, proof patterns) enable or constrain mathematical creativity?</p>
-          <div class="img-slot" data-img="wokthree_web">[ image placeholder ]</div>
+          <div class="img-slot" data-img="wokthree_web"></div>
         </div>
         <div class="card">
           <h3 style="color:var(--darkblue)">Natural Sciences</h3>
           <p class="muted"><span class="tag">KQ</span> How do lab notebooks and preregistered methods serve as external memory to secure reproducible knowledge?</p>
-          <div class="img-slot" data-img="wokfour_web">[ image placeholder ]</div>
+          <div class="img-slot" data-img="wokfour_web"></div>
         </div>
       </div>
     </section>
@@ -105,12 +96,12 @@
         <div class="card">
           <h3 style="color:var(--darkblue)">Knowledge & Politics</h3>
           <p class="muted">Collective remembrance, public memorials, and selective forgetting influence policy and identity.</p>
-          <div class="img-slot" data-img="wokfive_web">[ image placeholder ]</div>
+          <div class="img-slot" data-img="wokfive_web"></div>
         </div>
         <div class="card">
           <h3 style="color:var(--darkblue)">Knowledge & Religion</h3>
           <p class="muted">Rituals and liturgy act as communal memory, transmitting values across generations.</p>
-          <div class="img-slot" data-img="woksix_web">[ image placeholder ]</div>
+          <div class="img-slot" data-img="woksix_web"></div>
         </div>
       </div>
     </section>
@@ -120,7 +111,7 @@
       <div class="card">
         <h3 style="color:var(--darkblue)">Version control as external memory (STEM)</h3>
         <p class="muted">Git commits and lab notebooks create an auditable memory of changes—helping communities trust results without relying on individual recall.</p>
-        <div class="img-slot" data-img="wokseven_web">[ image placeholder ]</div>
+        <div class="img-slot" data-img="wokseven_web"></div>
       </div>
     </section>
 
@@ -214,9 +205,11 @@
     const choices=document.querySelectorAll('.choice');
     const quizMsg=document.getElementById('quizMsg');
     choices.forEach(btn=>{ btn.addEventListener('click',()=>{ const ok=btn.dataset.correct==='true'; choices.forEach(c=>c.disabled=true); btn.classList.add(ok?'correct':'wrong'); quizMsg.textContent= ok? 'Correct: TOK prefers claims supported by reliable processes and corroboration.' : 'Not quite. Clarity, repetition, or confidence alone do not guarantee knowledge.'; }); });
-  // Auto-load images by base name (no extension in HTML). Put files like wokone_web.png/jpg/webp next to index.html.
+
+    // Auto-load images dynamically (no extensions hardcoded)
     function tryLoad(slot, base, exts){
-      if(!exts.length) return; const ext = exts[0];
+      if(!exts.length) return;
+      const ext = exts[0];
       const img = new Image();
       img.onload = ()=>{ slot.innerHTML=''; slot.appendChild(img); };
       img.onerror = ()=> tryLoad(slot, base, exts.slice(1));
