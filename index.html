@@ -16,8 +16,6 @@
       --darkblue:#0b1d46;
       /* control image max height (feel free to adjust) */
       --img-max-h: 420px;
-      /* optional: per-image max width (keeps current look at 100%) */
-      --img-max-w: 100%;
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans",sans-serif;background:var(--bg);color:var(--ink);}
@@ -44,13 +42,9 @@
       font-size:14px;
       background:#ffffff;
       padding:8px;               /* a little breathing room for “contain” */
-      /* allow per-slot overrides; defaults come from :root */
-      --img-max-h: var(--img-max-h);
-      --img-max-w: var(--img-max-w);
     }
     .img-slot img{
-      /* keep previous behavior BUT allow per-image custom width */
-      width:min(100%, var(--img-max-w));
+      width:100%;
       height:auto;               /* keep aspect ratio */
       max-height:var(--img-max-h);
       object-fit:contain;        /* show the whole image */
@@ -114,7 +108,7 @@
           <div class="img-slot" data-img="wokfour_web"></div>
         </div>
         <div class="card">
-          <h3 style="color:var(--darkblue)">Natural Sciences</h3>a
+          <h3 style="color:var(--darkblue)">Natural Sciences</h3>
           <p class="muted"><span class="tag">KQ</span> How do observations of natural phenomenon contribute towards paradigm developments in the natural sciences?</p>
           <div class="img-slot" data-img="wokfive_web"></div>
         </div>
